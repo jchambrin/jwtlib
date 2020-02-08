@@ -33,6 +33,10 @@ func (j *JWTInfos) GetUID() string {
 	return j.sub
 }
 
+func (j *JWTInfos) IsValid() bool {
+	return j.exp.Before(time.Now())
+}
+
 // IsAuthenticated check if the access token is valid
 func (backend *JWTAuth) IsAuthenticated(token string) bool {
 	infos, err := backend.ParseToken(token)

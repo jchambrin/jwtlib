@@ -34,7 +34,7 @@ func (j *JWTInfos) GetUID() string {
 }
 
 func (j *JWTInfos) IsValid() bool {
-	return j.exp.Before(time.Now())
+	return j.exp.After(time.Now())
 }
 
 // IsAuthenticated check if the access token is valid
